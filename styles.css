@@ -676,4 +676,53 @@ body {
     padding-top: 80px; /* Adjust if your header height is different */
   }
 }
+.how-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  justify-content: space-between;
+}
+.how-step {
+  background: linear-gradient(120deg, #2D2342 0%, #18122B 100%);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(162, 89, 255, 0.10);
+  padding: 1.2rem 1rem;
+  display: flex;
+  align-items: center;
+  min-width: 220px;
+  flex: 1 1 220px;
+  margin-bottom: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.how-step:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(162, 89, 255, 0.18);
+}
+.how-step-icon {
+  font-size: 2.2rem;
+  color: #A259FF;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+.how-step-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #A259FF;
+  margin-bottom: 0.2rem;
+}
+.how-step-desc {
+  color: #EDEDED;
+  font-size: 1rem;
+}
+@media (max-width: 900px) {
+  .how-steps {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .how-step {
+    min-width: 0;
+    width: 100%;
+  }
+}
 

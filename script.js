@@ -9,3 +9,20 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
   }, 3000);
   this.reset();
 });
+let lastScrollY = window.scrollY;
+const header = document.querySelector('.header');
+window.addEventListener('scroll', function() {
+  if (window.innerWidth <= 800) {
+    if (window.scrollY > lastScrollY && window.scrollY > 60) {
+      header.classList.add('hide-on-scroll');
+    } else {
+      header.classList.remove('hide-on-scroll');
+    }
+    lastScrollY = window.scrollY;
+  }
+});
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 800) {
+    header.classList.remove('hide-on-scroll');
+  }
+});

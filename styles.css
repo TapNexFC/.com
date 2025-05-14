@@ -725,4 +725,54 @@ body {
     width: 100%;
   }
 }
-
+.contact-details {
+  margin-top: 2.5rem;
+  background: linear-gradient(120deg, #2D2342 0%, #18122B 100%);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(162, 89, 255, 0.10);
+  padding: 1.5rem 2rem;
+  color: #fff;
+  animation: cardIn 1s cubic-bezier(.77,0,.18,1) both;
+}
+.contact-details h3 {
+  color: #A259FF;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.contact-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contact-details li {
+  margin-bottom: 1rem;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.contact-details a {
+  color: #A259FF;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.contact-details a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.contact-details li::before {
+  content: '\f0e0'; /* Envelope icon for email */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  color: #A259FF;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+.contact-details li:nth-child(2)::before {
+  content: '\f095'; /* Phone icon */
+}
+.contact-details li:nth-child(3)::before {
+  content: '\f3c5'; /* Map marker icon */
+}

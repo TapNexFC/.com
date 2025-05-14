@@ -255,6 +255,14 @@
 
 
   <section id="contact" class="contact">
+    <div class="contact-details">
+      <h3>Contact Details</h3>
+      <ul>
+        <li><a href="mailto:tapnex.fc@gmail.com">tapnex.fc@gmail.com</a></li>
+        <li><a href="tel:+91 78985 75626">+91 78985 75626</a></li>
+        <li><a href="https://maps.app.goo.gl/xr1EXSMqgpDKQjLV7" target="_blank">Bengaluru, India</a></li>
+      </ul>
+    </div>
     <h2>Get In Touch</h2>
     <p>Tell us about your event and we’ll tailor a package just for you.</p>
     <form id="contactForm">
@@ -273,7 +281,7 @@
       <button type="submit">Send Message</button>
     </form>
     <p id="formMsg"></p>
-   
+    
   </section>
 
   <footer class="footer">
@@ -282,5 +290,11 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init('bwaWwm7Bj-sX2CPvN');
+  })();
+</script>
 </body>
 </html>

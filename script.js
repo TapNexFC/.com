@@ -1,13 +1,13 @@
-document.getElementById('contactForm').addEventListener('submit', function (e) {
+document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  const msg = document.getElementById('formMsg');
-  msg.textContent = "Thank you! We'll get back to you shortly.";
-  msg.classList.add('show');
-  setTimeout(() => {
-    msg.classList.remove('show');
-    msg.textContent = "";
-  }, 3000);
-  this.reset();
+  emailjs.sendForm('service_i66s27e', 'template_motk2dd', this)
+    .then(function() {
+      document.getElementById('formMsg').textContent = 'Message sent successfully!';
+      document.getElementById('formMsg').classList.add('show');
+    }, function(error) {
+      document.getElementById('formMsg').textContent = 'Failed to send message. Please try again.';
+      document.getElementById('formMsg').classList.add('show');
+    });
 });
 let lastScrollY = window.scrollY;
 const header = document.querySelector('.header');

@@ -7,23 +7,28 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="icon" type="image" href="./images/logo2.png">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
 </head>
 <body class="modern-theme">
   <header class="header">
     <div class="logo">TapNex</div>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
     <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#offerings">Solutions</a>
-      <a href="#why">Why TapNex</a>
-      <a href="#events">Events</a>
-      <!-- Removed Blog link -->
-      <a href="#contact">Contact</a>
+      <a href="#hero" class="nav-link" aria-current="page">Home</a>
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#solutions" class="nav-link">Solutions</a>
+      <a href="#why" class="nav-link">Why TapNex</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </nav>
   </header>
 
-  <section class="hero">
+  <section id="hero" class="hero">
     <h1>Revolutionizing Event Experiences</h1>
     <p>From NFC payments to ticketing and access control — TapNex is your full-stack event tech partner.</p>
+    <div class="tagline">Tap. Pay. Experience – NFC Payments Made Effortless</div>
     <ul class="hero-problems">
       <li>Messy and insecure cash handling at events</li>
       <li>Disconnected payment systems and cumbersome logistics</li>
@@ -31,12 +36,12 @@
       <li>Limited tech support for smaller events</li>
     </ul>
     <div class="cta-group">
-      <a href="#offerings" class="cta-button">Explore Our Solutions</a>
+      <a href="#solutions" class="cta-button">Explore Our Solutions</a>
       <a href="#contact" class="cta-button secondary">Let's Talk</a>
     </div>
   </section>
 
-  <section id="offerings-preview" class="offerings-preview">
+  <section id="solutions-preview" class="offerings-preview">
     <h2>Our Offerings at a Glance</h2>
     <div class="offerings-list">
       <div class="offering-item">NFC Card & Band Payments</div>
@@ -75,7 +80,7 @@
     </p>
   </section>
 
-  <section id="offerings" class="offerings">
+  <section id="solutions" class="offerings">
     <h2>Our Solutions</h2>
     <div class="offerings-list-expanded">
       <div class="offering-card">

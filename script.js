@@ -101,3 +101,98 @@ window.addEventListener('resize', function() {
 
 // Initial active section check
 setActiveSection();
+
+// Initialize AOS
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: true,
+  mirror: false
+});
+
+// FAQ Accordion functionality
+const accordionItems = document.querySelectorAll('.accordion-item');
+
+accordionItems.forEach(item => {
+  const header = item.querySelector('.accordion-header');
+  const content = item.querySelector('.accordion-content');
+
+  // Handle click events
+  header.addEventListener('click', () => toggleAccordion(item));
+
+  // Handle keyboard events
+  header.addEventListener('keydown', (e) => {
+    switch (e.key) {
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        toggleAccordion(item);
+        break;
+      case 'ArrowDown':
+        e.preventDefault();
+        focusNextAccordionHeader(item);
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        focusPreviousAccordionHeader(item);
+        break;
+      case 'Home':
+        e.preventDefault();
+        focusFirstAccordionHeader();
+        break;
+      case 'End':
+        e.preventDefault();
+        focusLastAccordionHeader();
+        break;
+    }
+  });
+});
+
+function toggleAccordion(item) {
+  const header = item.querySelector('.accordion-header');
+  const content = item.querySelector('.accordion-content');
+  const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+  // Close other open items
+  accordionItems.forEach(otherItem => {
+    if (otherItem !== item) {
+      const otherHeader = otherItem.querySelector('.accordion-header');
+      const otherContent = otherItem.querySelector('.accordion-content');
+      otherHeader.setAttribute('aria-expanded', 'false');
+      otherContent.removeAttribute('role');
+    }
+  });
+
+  // Toggle current item
+  header.setAttribute('aria-expanded', !isExpanded);
+  
+  if (!isExpanded) {
+    content.setAttribute('role', 'region');
+  } else {
+    content.removeAttribute('role');
+  }
+}
+
+function focusNextAccordionHeader(currentItem) {
+  const currentIndex = Array.from(accordionItems).indexOf(currentItem);
+  const nextItem = accordionItems[currentIndex + 1];
+  if (nextItem) {
+    nextItem.querySelector('.accordion-header').focus();
+  }
+}
+
+function focusPreviousAccordionHeader(currentItem) {
+  const currentIndex = Array.from(accordionItems).indexOf(currentItem);
+  const previousItem = accordionItems[currentIndex - 1];
+  if (previousItem) {
+    previousItem.querySelector('.accordion-header').focus();
+  }
+}
+
+function focusFirstAccordionHeader() {
+  accordionItems[0]?.querySelector('.accordion-header').focus();
+}
+
+function focusLastAccordionHeader() {
+  accordionItems[accordionItems.length - 1]?.querySelector('.accordion-header').focus();
+}

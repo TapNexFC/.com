@@ -185,6 +185,35 @@ body {
   from { opacity: 0; transform: scale(0.8);}
   to { opacity: 1; transform: scale(1);}
 }
+/* Scroll Animation Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s cubic-bezier(.77,0,.18,1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.6s cubic-bezier(.77,0,.18,1);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.6s cubic-bezier(.77,0,.18,1);
+}
+
+.reveal-left.active, .reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .about, .features, .contact {
   padding: 3rem 2rem;
   max-width: 1000px;
@@ -192,7 +221,6 @@ body {
   background: rgba(30, 30, 47, 0.92);
   border-radius: 24px;
   box-shadow: 0 4px 32px rgba(162, 89, 255, 0.08);
-  animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.3s both;
 }
 .features {
   margin-top: 0;
@@ -299,6 +327,112 @@ body {
 #formMsg.show {
   opacity: 1;
 }
+/* FAQ Section */
+.faq {
+  background: rgba(24, 18, 43, 0.98);
+  border-radius: 24px;
+  margin: 4rem auto 2rem auto;
+  padding: 3rem 2rem;
+  max-width: 900px;
+  box-shadow: 0 4px 32px rgba(162, 89, 255, 0.10);
+  animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.3s both;
+}
+
+.faq h2 {
+  color: #A259FF;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordion-item {
+  background: linear-gradient(120deg, #221B36 0%, #2D2342 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  outline: none;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 1rem;
+  position: relative;
+}
+
+.accordion-header:focus-visible {
+  outline: 2px solid #A259FF;
+  outline-offset: -2px;
+  border-radius: 12px;
+}
+
+.accordion-header:hover {
+  background: rgba(162, 89, 255, 0.1);
+}
+
+.accordion-header[aria-expanded="true"] {
+  background: rgba(162, 89, 255, 0.15);
+  color: #A259FF;
+}
+
+.accordion-header::after {
+  content: '+';
+  font-size: 1.5rem;
+  color: #A259FF;
+  transition: transform 0.3s ease;
+  margin-left: 1rem;
+}
+
+.accordion-header[aria-expanded="true"]::after {
+  transform: rotate(45deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+  padding: 0 1.2rem;
+  color: #EDEDED;
+  line-height: 1.6;
+  opacity: 0;
+}
+
+.accordion-content[role="region"] {
+  max-height: 300px;
+  padding: 0 1.2rem 1.2rem 1.2rem;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .faq {
+    padding: 2rem 1rem;
+    margin: 2rem auto;
+  }
+  
+  .accordion-header {
+    padding: 1rem;
+  }
+  
+  .accordion-item.active .accordion-content {
+    padding: 0 1rem 1rem 1rem;
+  }
+}
+
 .footer {
   text-align: center;
   padding: 1.2rem;
@@ -412,11 +546,18 @@ body {
 }
 .offerings-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .offerings-list {
+    grid-template-columns: 1fr;
+  }
 }
 .offering-item {
   background: linear-gradient(120deg, #2D2342 0%, #18122B 100%);
@@ -445,34 +586,135 @@ body {
 .offerings {
   background: rgba(24, 18, 43, 0.98);
   border-radius: 24px;
-  margin: 2rem auto;
-  padding: 2.5rem 1.5rem;
-  max-width: 1100px;
+  margin: 4rem auto 2rem auto;
+  padding: 3rem 2rem;
+  max-width: 1000px;
   box-shadow: 0 4px 32px rgba(162, 89, 255, 0.10);
   animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.3s both;
 }
+
 .offerings h2 {
   color: #A259FF;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
+  font-size: 2.2rem;
 }
+
+.solutions-category {
+  margin-bottom: 4rem;
+  padding: 1rem 0;
+}
+
+.solutions-category-title {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 4px solid #A259FF;
+}
+
 .offerings-list-expanded {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.2rem;
 }
+
 .offering-card {
   background: linear-gradient(120deg, #221B36 0%, #2D2342 100%);
   color: #EDEDED;
   border-radius: 16px;
   box-shadow: 0 2px 16px rgba(162, 89, 255, 0.10);
-  padding: 2rem 1.5rem;
-  min-width: 260px;
-  max-width: 320px;
-  flex: 1 1 260px;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   transition: transform 0.3s, box-shadow 0.3s;
   animation: cardIn 1s cubic-bezier(.77,0,.18,1) both;
+  position: relative;
+  overflow: hidden;
+}
+
+.offering-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #A259FF, #6C38CC);
+}
+
+.offering-icon {
+  font-size: 2.5rem;
+  color: #A259FF;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.offering-card:hover .offering-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.offering-card h3 {
+  color: #A259FF;
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.offering-card p {
+  margin: 0;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+@media (max-width: 1100px) {
+  .offerings-list-expanded {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .offerings {
+    padding: 3.5rem 2rem;
+  }
+
+  .offerings-list-expanded {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 600px;
+    padding: 1rem;
+  }
+  
+  .offering-card {
+    padding: 2rem 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .offerings {
+    padding: 3rem 1.2rem;
+    margin: 2rem auto;
+  }
+  
+  .offerings-list-expanded {
+    padding: 0.8rem;
+    gap: 1.2rem;
+  }
+  
+  .offering-card {
+    padding: 1.5rem 1.2rem;
+  }
 }
 .offering-card h3 {
   color: #A259FF;
@@ -1035,20 +1277,43 @@ body {
 .how-steps {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+  position: relative;
+}
+
+.how-steps::before {
+  content: '';
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  width: 85%;
+  height: 3px;
+  background: linear-gradient(90deg, #A259FF, #6C38CC);
+  transform: translateX(-50%);
+  z-index: 0;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+.how-steps {
+  padding: 1rem 0;
+  margin-top: 3rem;
 }
 .how-step {
   background: linear-gradient(120deg, #2D2342 0%, #18122B 100%);
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(162, 89, 255, 0.10);
-  padding: 1.2rem 1rem;
+  padding: 1.5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  min-width: 220px;
-  flex: 1 1 220px;
-  margin-bottom: 1rem;
+  text-align: center;
+  min-width: 200px;
+  max-width: 250px;
+  position: relative;
+  z-index: 1;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .how-step:hover {
